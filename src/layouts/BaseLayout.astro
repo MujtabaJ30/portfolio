@@ -1,0 +1,136 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  canonical?: string;
+}
+
+const { title, description, ogImage, canonical } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage ?? "/og-default.png"} />
+    <meta property="og:type" content="website" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+    <style>
+      @import "tailwindcss";
+
+      @theme {
+        --color-bg: oklch(1 0 0);
+        --color-surface: oklch(0.972 0.003 77);
+        --color-primary: oklch(0.65 0.15 77.1);
+        --color-primary-hover: oklch(0.59 0.16 77.1);
+        --color-accent: oklch(0.45 0.11 250);
+        --color-accent-hover: oklch(0.4 0.12 250);
+        --color-ink: oklch(0.15 0.01 77);
+        --color-muted: oklch(0.5 0.008 77);
+        --color-border: oklch(0.9 0.005 77);
+        --font-sans: "Inter", "SF Pro", system-ui, sans-serif;
+        --font-mono: "JetBrains Mono", "SF Mono", monospace;
+      }
+
+      .dark {
+        --color-bg: oklch(0.08 0 0);
+        --color-surface: oklch(0.15 0.003 77);
+        --color-primary: oklch(0.72 0.14 77.1);
+        --color-primary-hover: oklch(0.77 0.13 77.1);
+        --color-accent: oklch(0.6 0.12 250);
+        --color-accent-hover: oklch(0.65 0.11 250);
+        --color-ink: oklch(0.93 0.005 77);
+        --color-muted: oklch(0.6 0.005 77);
+        --color-border: oklch(0.2 0.003 77);
+      }
+    </style>
+    <style is:global>
+      html {
+        background-color: var(--color-bg);
+        color: var(--color-ink);
+        font-family: var(--font-sans);
+        scroll-behavior: smooth;
+      }
+      body {
+        min-height: 100dvh;
+      }
+      ::selection {
+        background-color: var(--color-primary);
+        color: var(--color-bg);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          transition-duration: 0s !important;
+          animation-duration: 0s !important;
+        }
+      }
+    </style>
+    <script is:inline>
+      (function() {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body class="flex flex-col min-h-dvh">
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-[var(--color-bg)]/80 border-b border-[var(--color-border)]">
+      <nav class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="/" class="text-lg font-semibold tracking-tight text-[var(--color-ink)] no-underline hover:text-[var(--color-primary)] transition-colors">
+          MJ
+        </a>
+        <div class="flex items-center gap-6">
+          <a href="/data-scientist" class="text-sm text-[var(--color-muted)] hover:text-[var(--color-ink)] transition-colors no-underline">Data Scientist</a>
+          <a href="/product-manager" class="text-sm text-[var(--color-muted)] hover:text-[var(--color-ink)] transition-colors no-underline">Product Manager</a>
+          <a href="/data-analyst" class="text-sm text-[var(--color-muted)] hover:text-[var(--color-ink)] transition-colors no-underline">Data Analyst</a>
+          <button id="theme-toggle" class="ml-2 p-2 rounded-lg text-[var(--color-muted)] hover:text-[var(--color-ink)] hover:bg-[var(--color-surface)] transition-colors cursor-pointer" aria-label="Toggle theme">
+            <svg class="w-5 h-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+            <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="border-t border-[var(--color-border)] py-8">
+      <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-[var(--color-muted)]">&copy; {new Date().getFullYear()} Mujtaba Jafri</p>
+        <div class="flex items-center gap-4">
+          <a href="mailto:hello@mujtaba.dev" class="text-sm text-[var(--color-muted)] hover:text-[var(--color-ink)] transition-colors no-underline">Email</a>
+          <a href="https://github.com/mujtaba" target="_blank" rel="noopener" class="text-sm text-[var(--color-muted)] hover:text-[var(--color-ink)] transition-colors no-underline">GitHub</a>
+          <a href="https://linkedin.com/in/mujtaba" target="_blank" rel="noopener" class="text-sm text-[var(--color-muted)] hover:text-[var(--color-ink)] transition-colors no-underline">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.getElementById('theme-toggle');
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          const html = document.documentElement;
+          const isDark = html.classList.toggle('dark');
+          localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+      }
+    </script>
+  </body>
+</html>

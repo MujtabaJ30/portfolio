@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mujtaba.pages.dev/sitemap-index.xml

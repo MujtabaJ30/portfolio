@@ -1,0 +1,36 @@
+---
+import RoleLayout from '../layouts/RoleLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import SkillsGrid from '../components/SkillsGrid.astro';
+import Timeline from '../components/Timeline.astro';
+import Contact from '../components/Contact.astro';
+import { profile, projects, experience, skills } from '../data/data-analyst';
+---
+
+<RoleLayout
+  title={profile.title}
+  description={`${profile.title} — ${profile.tagline}`}
+  role="Data Analyst"
+  tagline={profile.tagline}
+>
+  <section class="max-w-5xl mx-auto px-6 py-8">
+    <div class="max-w-2xl">
+      <p class="text-[var(--color-muted)] leading-relaxed" style="text-wrap: pretty">
+        {profile.about}
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 py-16">
+    <h2 class="text-2xl font-bold text-[var(--color-ink)] mb-10">Projects</h2>
+    <div class="grid gap-6">
+      {projects.map((project) => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+  </section>
+
+  <Timeline experience={experience} />
+  <SkillsGrid skills={skills} />
+  <Contact email={profile.email} />
+</RoleLayout>

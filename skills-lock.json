@@ -1,6 +1,24 @@
 {
   "version": 1,
   "skills": {
+    "agentic-website-design": {
+      "source": "melvinmt/skills",
+      "sourceType": "github",
+      "skillPath": "skills/agentic-website-design/SKILL.md",
+      "computedHash": "2365bc46e0ad3a73f2b302d0f9fb10a2642246228619f43250084c306134e2a2"
+    },
+    "astro-dev": {
+      "source": "gigio1023/astro-dev-skill",
+      "sourceType": "github",
+      "skillPath": "skills/astro-dev/SKILL.md",
+      "computedHash": "df21383363eeeb89c65ae630906d53e469fcefea0fd040294374c600c2cd8043"
+    },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "93f53fd1c0352d3d7ec17b8f73d7351bf76f4821e55d123c9d2abc2c53ba48e4"
+    },
     "impeccable": {
       "source": "pbakaus/impeccable",
       "sourceType": "github",
