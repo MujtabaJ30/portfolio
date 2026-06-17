@@ -68,5 +68,40 @@ When building the portfolio site, the model must tell the user exactly how to vi
 - **Screenshots** — Already provided in each project's `Assets/` folder
 - **Resume PDF** — `product_resume_V_4.tex` (needs compiling or converting to PDF)
 
-### Next Step
-Initialize Next.js + Tailwind + build sections
+## 2026-06-18 — Build Phase 1 Complete
+
+### What Was Built
+- Initialized Next.js 15 + TypeScript + Tailwind CSS v4 project manually
+- Configured Geist Sans + Geist Mono via `next/font/google`
+- Set up dark theme design tokens (`#0a0a0a` bg, `#f59e0b` accent) in `globals.css`
+- Built single-page portfolio with:
+  - **Hero** — name, philosophy, CTAs, contact links
+  - **Projects** — 3 project cards (alternating layout) with hover states
+  - **Project modals** — full case studies (role, problem, approach, process, results, trade-offs, learning, screenshots)
+  - **Skills** — capability matrix with Product / Technical / AI groups
+  - **Contact + Footer** — email, LinkedIn, GitHub
+- Added scroll-reveal animations with `motion` (Framer Motion) and `useReducedMotion`
+- Copied all project screenshots into `public/images/`
+- Production build passes (`npm run build`)
+
+### Project Structure
+```
+app/
+├── page.tsx
+├── layout.tsx
+├── globals.css
+├── sections/      # Hero, Projects, Skills, Contact, Footer
+├── components/    # Button, ProjectCard, ProjectModal, SectionReveal
+├── lib/data.ts    # All content
+└── types/index.ts
+public/images/     # Project screenshots
+```
+
+### Notes
+- Resume PDF download removed for now because `product_resume_V_4.tex` needs to be compiled to PDF. Can be added back once a PDF is generated.
+- All external links (live demos, GitHub, LinkedIn) are wired in.
+
+### Next Steps
+- Deploy to Vercel
+- Add resume PDF when available
+- Optional: Lighthouse audit and accessibility refinements
