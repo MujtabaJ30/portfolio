@@ -1,34 +1,32 @@
 "use client";
 
 import { ArrowDown, LinkedinLogo } from "@phosphor-icons/react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { Button } from "@/app/components/Button";
 import { heroContent, contactLinks } from "@/app/lib/data";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
+
 export function Hero() {
-  const shouldReduceMotion = useReducedMotion();
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: shouldReduceMotion ? 0 : 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
-    },
-  };
-
   return (
-    <section className="relative flex min-h-screen flex-col justify-center px-6 py-24 md:px-12 lg:px-20">
+    <section className="flex min-h-screen flex-col justify-center px-6 py-24 md:px-12 lg:px-20">
       <motion.div
         className="mx-auto w-full max-w-7xl"
         initial="hidden"
@@ -106,15 +104,6 @@ export function Hero() {
           </motion.div>
         </div>
       </motion.div>
-
-      <div className="absolute bottom-8 left-6 right-6 flex items-center justify-between border-t border-border pt-6 text-xs text-muted md:left-12 md:right-12 lg:left-20 lg:right-20">
-        <span className="font-mono uppercase tracking-wide">
-          Based in Ahmedabad, India
-        </span>
-        <span className="font-mono uppercase tracking-wide">
-          Open to PM roles
-        </span>
-      </div>
     </section>
   );
 }
