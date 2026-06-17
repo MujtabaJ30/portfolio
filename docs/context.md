@@ -80,9 +80,13 @@ When building the portfolio site, the model must tell the user exactly how to vi
   - **Project modals** — full case studies (role, problem, approach, process, results, trade-offs, learning, screenshots)
   - **Skills** — capability matrix with Product / Technical / AI groups
   - **Contact + Footer** — email, LinkedIn, GitHub
-- Added scroll-reveal animations with `motion` (Framer Motion) and `useReducedMotion`
+- Added scroll-reveal animations with `motion` (Framer Motion)
 - Copied all project screenshots into `public/images/`
 - Production build passes (`npm run build`)
+
+### Bug Fix
+- Removed `useReducedMotion` from motion components because it caused hydration mismatches between server and client, which left Projects/Skills/Contact invisible
+- Removed the hero bottom strip ('Based in Ahmedabad / Open to PM roles')
 
 ### Project Structure
 ```
