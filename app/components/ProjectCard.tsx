@@ -48,6 +48,7 @@ export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
 
   return (
     <article
+      id={project.id}
       className={`group grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12 ${
         isReversed ? "lg:text-right" : ""
       }`}

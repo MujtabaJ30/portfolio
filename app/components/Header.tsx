@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "@/app/components/ThemeToggle";
+import { smoothScrollTo } from "@/app/lib/scroll";
 
 const navItems = [
   { label: "Work", href: "#projects" },
@@ -21,6 +22,14 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleNavClick = async (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+    await smoothScrollTo(href, 600);
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -33,6 +42,10 @@ export function Header() {
         <a
           href="#"
           className="text-sm font-semibold tracking-tight text-text"
+          onClick={async (e) => {
+            e.preventDefault();
+            await smoothScrollTo("body", 400, 0);
+          }}
         >
           Mujtaba Jafri
         </a>
@@ -42,6 +55,7 @@ export function Header() {
             <a
               key={item.href}
               href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
               className="rounded px-3 py-1.5 text-sm text-muted transition-colors hover:bg-surface-hover hover:text-text"
             >
               {item.label}

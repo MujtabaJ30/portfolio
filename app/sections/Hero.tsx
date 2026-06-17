@@ -11,6 +11,7 @@ import { motion } from "motion/react";
 import { Button } from "@/app/components/Button";
 import { heroContent, contactLinks, projects } from "@/app/lib/data";
 import { useProjectModal } from "@/app/components/ProjectModalProvider";
+import { smoothScrollTo } from "@/app/lib/scroll";
 
 function AnimatedName({ text }: { text: string }) {
   return (
@@ -66,14 +67,14 @@ const teaserItems = [
 export function Hero() {
   const { openProject } = useProjectModal();
 
-  const handleTeaserClick = (id: string) => {
-    const element = document.getElementById("projects");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-    setTimeout(() => {
-      openProject(id);
-    }, 600);
+  const handleViewWork = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    await smoothScrollTo("#projects", 700);
+  };
+
+  const handleTeaserClick = async (id: string) => {
+    await smoothScrollTo(`#${id}`, 700);
+    openProject(id);
   };
 
   return (
@@ -107,6 +108,7 @@ export function Hero() {
           >
             <a
               href="#projects"
+              onClick={handleViewWork}
               className="inline-flex items-center justify-center gap-2 rounded bg-primary px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-hover"
             >
               {heroContent.cta}

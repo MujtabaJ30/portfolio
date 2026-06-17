@@ -2,9 +2,9 @@
 
 @theme {
   --color-bg: #ffffff;
-  --color-surface: #f4f4f4;
-  --color-surface-hover: #e5e5e5;
-  --color-border: #eeeeee;
+  --color-surface: #f0f0f0;
+  --color-surface-hover: #e4e4e4;
+  --color-border: #d4d4d4;
   --color-text: #171a20;
   --color-muted: #5c5e62;
   --color-primary: #3e6ae1;
