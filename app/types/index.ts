@@ -18,6 +18,7 @@ export interface Project {
     drive?: string;
     ppt?: string;
   };
+  thumbnail: string;
   images: {
     src: string;
     alt: string;

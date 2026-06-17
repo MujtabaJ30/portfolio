@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 interface ButtonProps {
   children: ReactNode;
   href?: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
   variant?: "primary" | "secondary" | "ghost";
   icon?: ReactNode;
   className?: string;
@@ -20,22 +20,22 @@ export function Button({
   download,
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 focus:ring-offset-bg";
+    "inline-flex items-center justify-center gap-2 rounded px-5 py-2.5 text-sm font-medium transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50";
 
   const variants = {
     primary:
-      "bg-accent text-bg hover:bg-accent-hover active:scale-[0.98]",
+      "bg-accent text-white hover:bg-accent-hover",
     secondary:
-      "bg-surface text-text border border-border hover:bg-surface-hover hover:border-accent/30 active:scale-[0.98]",
+      "bg-surface text-text border border-border hover:bg-surface-hover hover:border-accent/30",
     ghost:
-      "text-muted hover:text-text hover:bg-surface-hover active:scale-[0.98]",
+      "text-muted hover:text-text hover:bg-surface-hover",
   };
 
   const classes = `${baseStyles} ${variants[variant]} ${className}`;
 
   if (href) {
     return (
-      <a href={href} className={classes} download={download}>
+      <a href={href} className={classes} download={download} onClick={onClick}>
         {children}
         {icon}
       </a>

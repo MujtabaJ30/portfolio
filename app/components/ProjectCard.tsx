@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowUpRight } from "@phosphor-icons/react";
+import { ArrowUpRight, GithubLogo, Globe, PresentationChart, Folder } from "@phosphor-icons/react";
 import { Project } from "@/app/types";
 
 interface ProjectCardProps {
@@ -9,6 +9,17 @@ interface ProjectCardProps {
   onClick: () => void;
   index: number;
 }
+
+const linkConfig: {
+  key: keyof Project["links"];
+  label: string;
+  icon: React.ReactNode;
+}[] = [
+  { key: "live", label: "Live Demo", icon: <Globe className="h-3.5 w-3.5" weight="bold" /> },
+  { key: "github", label: "GitHub", icon: <GithubLogo className="h-3.5 w-3.5" weight="bold" /> },
+  { key: "drive", label: "Drive", icon: <Folder className="h-3.5 w-3.5" weight="bold" /> },
+  { key: "ppt", label: "Deck", icon: <PresentationChart className="h-3.5 w-3.5" weight="bold" /> },
+];
 
 export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
   const isReversed = index % 2 === 1;
@@ -28,11 +39,11 @@ export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
       >
         <div className="aspect-[16/10] overflow-hidden">
           <Image
-            src={project.images[0].src}
-            alt={project.images[0].alt}
+            src={project.thumbnail}
+            alt={`${project.title} thumbnail`}
             width={1200}
             height={750}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
         </div>
         <div className="absolute right-4 top-4 rounded-full bg-bg/80 p-2 text-text opacity-0 backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100">
@@ -41,7 +52,7 @@ export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
       </button>
 
       <div className={`order-2 lg:order-none ${isReversed ? "lg:order-1" : ""}`}>
-        <p className="font-mono text-sm uppercase tracking-wide text-accent">
+        <p className="text-sm font-medium text-accent">
           {project.tagline}
         </p>
         <h3 className="mt-2 text-3xl font-semibold tracking-tight text-text">
@@ -52,24 +63,41 @@ export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
           {project.summary}
         </p>
 
-        <div className="mt-6 flex flex-wrap gap-2">
+        <div className="mt-5 flex flex-wrap gap-2">
           {project.stack.slice(0, 4).map((tech) => (
             <span
               key={tech}
-              className="rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium text-muted"
+              className="rounded border border-border bg-surface px-2.5 py-1 text-xs font-medium text-muted"
             >
               {tech}
             </span>
           ))}
         </div>
 
-        <button
-          onClick={onClick}
-          className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-accent-hover"
-        >
-          Read case study
-          <ArrowUpRight className="h-4 w-4" weight="bold" />
-        </button>
+        <div className={`mt-6 flex flex-wrap items-center gap-3 ${isReversed ? "lg:justify-end" : ""}`}>
+          {linkConfig
+            .filter((item) => project.links[item.key])
+            .map((item) => (
+              <a
+                key={item.key}
+                href={project.links[item.key]}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded bg-surface px-3 py-1.5 text-sm text-text transition-colors hover:bg-accent hover:text-bg"
+              >
+                {item.icon}
+                {item.label}
+              </a>
+            ))}
+
+          <button
+            onClick={onClick}
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-accent-hover"
+          >
+            Read case study
+            <ArrowUpRight className="h-4 w-4" weight="bold" />
+          </button>
+        </div>
       </div>
     </article>
   );

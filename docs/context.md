@@ -102,10 +102,11 @@ public/images/     # Project screenshots
 ```
 
 ### Notes
-- Resume PDF download removed for now because `product_resume_V_4.tex` needs to be compiled to PDF. Can be added back once a PDF is generated.
+- Resume PDF placeholder button wired to `/public/resume.pdf`.
 - All external links (live demos, GitHub, LinkedIn) are wired in.
+- Added Tesla-inspired DESIGN.md for design discipline.
+- Added dark/light theme toggle with default dark; amber accent kept across both themes.
 
 ### Next Steps
 - Deploy to Vercel
-- Add resume PDF when available
 - Optional: Lighthouse audit and accessibility refinements

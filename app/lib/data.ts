@@ -4,7 +4,7 @@ export const heroContent = {
   name: "Mujtaba Jafri",
   role: "Product Manager",
   philosophy:
-    "I treat product management like industrial design: mapping the full user ecosystem, not just the interface. I believe the best products come from ruthless prioritization, obsession with inputs over outcomes, and the willingness to ship before everything is perfect — then iterate with real data.",
+    "I build products by starting with the real world, not the ideal one. I talk to users, dig into data, write clear specs, and ship fast enough to learn before I over-invest. My recent work includes an AI tool that writes PRDs from a problem statement, a teardown of Rapido's grocery app Ownly, and a SQL analysis of 100,000 e-commerce orders. I am looking for PM roles where I can turn ambiguity into something people actually use.",
   cta: "View My Work",
 };
 
@@ -41,7 +41,13 @@ export const projects: Project[] = [
       live: "https://mujtaba-prd.vercel.app/",
       github: "https://github.com/MujtabaJ30/PRD-Generator",
     },
+    thumbnail: "/images/prd/Final PRD Result.png",
     images: [
+      {
+        src: "/images/prd/Final PRD Result.png",
+        alt: "PRD Generator final output",
+        caption: "Final structured PRD output",
+      },
       {
         src: "/images/prd/Initial Input.png",
         alt: "PRD Generator input screen",
@@ -51,11 +57,6 @@ export const projects: Project[] = [
         src: "/images/prd/PRD Generating screen.png",
         alt: "PRD Generator streaming output",
         caption: "Streaming generation with progress",
-      },
-      {
-        src: "/images/prd/Final PRD Result.png",
-        alt: "PRD Generator final output",
-        caption: "Final structured PRD output",
       },
     ],
   },
@@ -93,6 +94,7 @@ export const projects: Project[] = [
         "https://drive.google.com/drive/folders/1f7JIWPRwlcHTbto9-NhSCaKxKleOFj6i?usp=sharing",
       ppt: "https://www.canva.com/design/DAHKXfy2rWw/NHKgxWKUjf7XnSX9cWQUsA/view",
     },
+    thumbnail: "/images/ownly/Ownly Thumbnail.png",
     images: [
       {
         src: "/images/ownly/SSO sign in with rapido.png",
@@ -154,6 +156,7 @@ export const projects: Project[] = [
         "https://sql-appuct-analytics-3uobdqo7wkjvr2ctgatihf.streamlit.app/",
       github: "https://github.com/MujtabaJ30/SQL-Product-Analytics",
     },
+    thumbnail: "/images/olist/Overall KPI dashboard 1st page.png",
     images: [
       {
         src: "/images/olist/Overall KPI dashboard 1st page.png",
