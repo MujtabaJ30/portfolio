@@ -1,10 +1,10 @@
 "use client";
 
-import { Compass, Code, Brain } from "@phosphor-icons/react";
+import { Compass, Code, Brain, IconProps } from "@phosphor-icons/react";
 import { skillGroups } from "@/app/lib/data";
 import { SectionReveal } from "@/app/components/SectionReveal";
 
-const iconMap: Record<string, React.ComponentType<{ className?: string; weight?: string }>> = {
+const iconMap: Record<string, React.ComponentType<IconProps>> = {
   Compass,
   Code,
   Brain,
