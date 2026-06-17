@@ -1,9 +1,16 @@
 "use client";
 
-import { ArrowDown, LinkedinLogo, DownloadSimple } from "@phosphor-icons/react";
+import Image from "next/image";
+import {
+  ArrowDown,
+  LinkedinLogo,
+  DownloadSimple,
+  ArrowUpRight,
+} from "@phosphor-icons/react";
 import { motion } from "motion/react";
 import { Button } from "@/app/components/Button";
-import { heroContent, contactLinks } from "@/app/lib/data";
+import { heroContent, contactLinks, projects } from "@/app/lib/data";
+import { useProjectModal } from "@/app/components/ProjectModalProvider";
 
 function AnimatedName({ text }: { text: string }) {
   return (
@@ -50,23 +57,44 @@ function AnimatedParagraph({ text }: { text: string }) {
   );
 }
 
+const teaserItems = [
+  { id: "rapido-teardown", label: "Prototype work" },
+  { id: "ai-prd-generator", label: "PRD work" },
+  { id: "olist-sql-analytics", label: "SQL and Data work" },
+];
+
 export function Hero() {
-  const handleScroll = (e: React.MouseEvent<HTMLElement>) => {
+  const { openProject } = useProjectModal();
+
+  const scrollToProjects = () => {
+    const element = document.getElementById("projects");
+    if (!element) return;
+
+    const headerOffset = 80;
+    const top =
+      element.getBoundingClientRect().top + window.scrollY - headerOffset;
+    window.scrollTo({ top, behavior: "smooth" });
+  };
+
+  const handleViewWork = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    document
-      .getElementById("projects")
-      ?.scrollIntoView({ behavior: "smooth" });
+    scrollToProjects();
+  };
+
+  const handleTeaserClick = (id: string) => {
+    openProject(id);
+    scrollToProjects();
   };
 
   return (
     <section className="flex min-h-screen flex-col justify-center px-6 pt-24 pb-24 md:px-12 lg:px-20">
-      <div className="mx-auto w-full max-w-7xl">
+      <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-2">
         <div className="max-w-3xl">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
-            className="mb-4 text-base font-semibold uppercase tracking-wider text-accent md:text-lg"
+            className="mb-4 text-base font-medium text-primary md:text-lg"
           >
             {heroContent.role}
           </motion.p>
@@ -80,12 +108,16 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.2, ease: [0.22, 1, 0.36, 1] as const }}
+            transition={{
+              duration: 0.5,
+              delay: 1.2,
+              ease: [0.22, 1, 0.36, 1] as const,
+            }}
             className="mt-10 flex flex-wrap items-center gap-4"
           >
             <Button
               href="#projects"
-              onClick={handleScroll}
+              onClick={handleViewWork}
               icon={<ArrowDown className="h-4 w-4" weight="bold" />}
             >
               {heroContent.cta}
@@ -102,7 +134,7 @@ export function Hero() {
 
             <Button
               href={contactLinks.linkedin}
-              variant="ghost"
+              variant="secondary"
               icon={<LinkedinLogo className="h-4 w-4" weight="bold" />}
             >
               LinkedIn
@@ -112,12 +144,16 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.35, ease: [0.22, 1, 0.36, 1] as const }}
+            transition={{
+              duration: 0.5,
+              delay: 1.35,
+              ease: [0.22, 1, 0.36, 1] as const,
+            }}
             className="mt-12 flex flex-wrap gap-6 text-sm text-muted"
           >
             <a
               href={`mailto:${contactLinks.email}`}
-              className="transition-colors hover:text-accent"
+              className="transition-colors hover:text-primary"
             >
               {contactLinks.email}
             </a>
@@ -125,7 +161,7 @@ export function Hero() {
               href={contactLinks.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:text-accent"
+              className="transition-colors hover:text-primary"
             >
               LinkedIn
             </a>
@@ -133,12 +169,59 @@ export function Hero() {
               href={contactLinks.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:text-accent"
+              className="transition-colors hover:text-primary"
             >
               GitHub
             </a>
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.5,
+            delay: 1.1,
+            ease: [0.22, 1, 0.36, 1] as const,
+          }}
+          className="hidden lg:grid gap-4"
+        >
+          {teaserItems.map((item) => {
+            const project = projects.find((p) => p.id === item.id);
+            if (!project) return null;
+
+            return (
+              <button
+                key={item.id}
+                onClick={() => handleTeaserClick(item.id)}
+                className="group flex items-center gap-4 rounded-xl border border-border bg-surface p-3 text-left transition-colors hover:border-primary/50 hover:bg-surface-hover"
+              >
+                <div className="relative aspect-[16/10] w-28 shrink-0 overflow-hidden rounded-lg">
+                  <Image
+                    src={project.thumbnail}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+                  />
+                </div>
+                <div className="flex flex-1 items-center justify-between pr-2">
+                  <div>
+                    <p className="text-sm font-medium text-primary">
+                      {item.label}
+                    </p>
+                    <p className="text-base font-medium text-text">
+                      {project.title}
+                    </p>
+                  </div>
+                  <ArrowUpRight
+                    className="h-5 w-5 text-muted transition-colors group-hover:text-primary"
+                    weight="bold"
+                  />
+                </div>
+              </button>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );

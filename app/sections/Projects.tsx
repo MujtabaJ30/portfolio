@@ -1,22 +1,26 @@
 "use client";
 
-import { useState } from "react";
 import { projects } from "@/app/lib/data";
 import { Project } from "@/app/types";
 import { ProjectCard } from "@/app/components/ProjectCard";
 import { ProjectModal } from "@/app/components/ProjectModal";
 import { SectionReveal } from "@/app/components/SectionReveal";
+import { useProjectModal } from "@/app/components/ProjectModalProvider";
 
 export function Projects() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const { openProjectId, openProject, closeProject } = useProjectModal();
+
+  const selectedProject: Project | null =
+    projects.find((project) => project.id === openProjectId) || null;
 
   return (
-    <section id="projects" className="px-6 py-24 md:px-12 lg:px-20">
+    <section
+      id="projects"
+      className="scroll-mt-24 px-6 py-24 md:px-12 lg:px-20"
+    >
       <div className="mx-auto max-w-7xl">
         <SectionReveal className="mb-16 max-w-2xl">
-          <p className="text-base font-medium text-accent">
-            Projects
-          </p>
+          <p className="text-base font-medium text-primary">Projects</p>
           <h2 className="mt-3 text-4xl font-semibold tracking-tight text-text md:text-5xl lg:text-6xl">
             Recent work
           </h2>
@@ -31,7 +35,7 @@ export function Projects() {
               <ProjectCard
                 project={project}
                 index={index}
-                onClick={() => setSelectedProject(project)}
+                onClick={() => openProject(project.id)}
               />
             </SectionReveal>
           ))}
@@ -39,10 +43,7 @@ export function Projects() {
       </div>
 
       {selectedProject && (
-        <ProjectModal
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-        />
+        <ProjectModal project={selectedProject} onClose={closeProject} />
       )}
     </section>
   );

@@ -11,7 +11,7 @@ export function Footer() {
         <div className="flex gap-6 text-sm text-muted">
           <a
             href={`mailto:${contactLinks.email}`}
-            className="transition-colors hover:text-accent"
+            className="transition-colors hover:text-primary"
           >
             Email
           </a>
@@ -19,7 +19,7 @@ export function Footer() {
             href={contactLinks.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors hover:text-accent"
+            className="transition-colors hover:text-primary"
           >
             LinkedIn
           </a>
@@ -27,7 +27,7 @@ export function Footer() {
             href={contactLinks.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors hover:text-accent"
+            className="transition-colors hover:text-primary"
           >
             GitHub
           </a>

@@ -18,7 +18,7 @@ export function Skills() {
     >
       <div className="mx-auto max-w-7xl">
         <SectionReveal className="mb-16 max-w-2xl">
-          <p className="text-base font-medium text-accent">Capabilities</p>
+          <p className="text-base font-medium text-primary">Capabilities</p>
           <h2 className="mt-3 text-4xl font-semibold tracking-tight text-text md:text-5xl lg:text-6xl">
             Skills across the product stack
           </h2>
@@ -33,9 +33,9 @@ export function Skills() {
             const Icon = iconMap[group.icon];
             return (
               <SectionReveal key={group.category} delay={index * 0.1}>
-                <div className="h-full rounded-xl border border-border bg-surface p-6 transition-colors hover:border-accent/30 sm:p-8">
+                <div className="h-full rounded-xl border border-border bg-surface p-6 transition-colors hover:border-primary/30 sm:p-8">
                   <div className="mb-6 flex items-center gap-3">
-                    <div className="rounded bg-accent/10 p-2 text-accent">
+                    <div className="rounded bg-primary/10 p-2 text-primary">
                       {Icon && <Icon className="h-5 w-5" weight="bold" />}
                     </div>
                     <h3 className="text-xl font-semibold text-text">

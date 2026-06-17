@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
-import { X, ArrowUpRight, GithubLogo } from "@phosphor-icons/react";
+import { X, ArrowUpRight } from "@phosphor-icons/react";
 import { Project } from "@/app/types";
 
 interface ProjectModalProps {
@@ -40,12 +40,12 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
       aria-labelledby="project-modal-title"
     >
       <div
-        className="relative my-8 w-full max-w-4xl overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl"
+        className="relative my-8 w-full max-w-4xl overflow-hidden rounded-2xl border border-border bg-surface"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 rounded-full bg-bg/80 p-2 text-text backdrop-blur-sm transition-colors hover:bg-bg hover:text-accent"
+          className="absolute right-4 top-4 z-10 rounded-full bg-bg/80 p-2 text-text backdrop-blur-sm transition-colors hover:bg-bg hover:text-primary"
           aria-label="Close case study"
         >
           <X className="h-5 w-5" weight="bold" />
@@ -62,7 +62,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
         </div>
 
         <div className="p-6 sm:p-10">
-          <p className="font-mono text-sm uppercase tracking-wide text-accent">
+          <p className="font-mono text-sm uppercase tracking-wide text-primary">
             {project.tagline}
           </p>
           <h2
@@ -80,10 +80,13 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-lg bg-bg px-4 py-2 text-sm font-medium text-text transition-colors hover:bg-accent hover:text-bg"
+                className="group/link inline-flex items-center gap-1.5 rounded-lg border border-border bg-bg px-4 py-2 text-sm font-medium text-text transition-colors hover:border-primary/50 hover:bg-surface hover:text-primary"
               >
                 {item.label}
-                <ArrowUpRight className="h-3.5 w-3.5" weight="bold" />
+                <ArrowUpRight
+                  className="h-3.5 w-3.5 transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
+                  weight="bold"
+                />
               </a>
             ))}
           </div>
@@ -105,7 +108,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               <ul className="space-y-2">
                 {project.process.map((step, i) => (
                   <li key={i} className="flex gap-3 text-muted">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                     {step}
                   </li>
                 ))}
@@ -116,7 +119,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               <ul className="space-y-2">
                 {project.results.map((result, i) => (
                   <li key={i} className="flex gap-3 text-muted">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                     {result}
                   </li>
                 ))}
@@ -139,7 +142,10 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               </h3>
               <div className="grid gap-4 sm:grid-cols-2">
                 {project.images.slice(1).map((image, i) => (
-                  <figure key={i} className="overflow-hidden rounded-xl border border-border">
+                  <figure
+                    key={i}
+                    className="overflow-hidden rounded-xl border border-border"
+                  >
                     <Image
                       src={image.src}
                       alt={image.alt}
