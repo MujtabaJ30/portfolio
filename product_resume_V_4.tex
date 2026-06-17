@@ -1,0 +1,197 @@
+%----------------------------------------------------------------------------------------
+%   DOCUMENT DEFINITION
+%----------------------------------------------------------------------------------------
+
+\documentclass[a4paper,11pt]{article}
+
+%----------------------------------------------------------------------------------------
+%   PACKAGES
+%----------------------------------------------------------------------------------------
+
+\usepackage{url}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9, top=0.6cm, bottom=1.5cm, left=1cm, right=1cm]{geometry}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{fontawesome5}
+
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+
+\hypersetup{
+    colorlinks=true,
+    breaklinks=true,
+    urlcolor=linkcolour,
+    linkcolor=linkcolour
+}
+
+\titleformat{\section}
+{\large\scshape\raggedright}
+{}{0em}{}[\titlerule]
+
+\titlespacing{\section}{0pt}{6pt}{6pt}
+
+%----------------------------------------------------------------------------------------
+%   BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\pagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+%   TITLE
+%----------------------------------------------------------------------------------------
+
+\begin{tabularx}{\linewidth}{@{} >{\centering\arraybackslash}X @{}}
+
+\Huge{Mujtaba Jafri} \\[6pt]
+
+\href{https://www.linkedin.com/in/mujtaba30/}{\faLinkedin\ LinkedIn}
+\ $|$ \
+\href{mailto:jafri.h@ahduni.edu.in}{\faEnvelope\ jafri.h@ahduni.edu.in}
+\ $|$ \
+\href{tel:+919665857777}{\faMobile\ +91-9665857777}
+\ $|$ \
+\href{https://github.com/MujtabaJ30}{\faGithub\ GitHub}
+
+
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%   SKILLS
+%----------------------------------------------------------------------------------------
+
+\section{Skills}
+
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+
+\textbf{Product:} &
+Product Strategy, PRD Writing, User Stories, Wireframing, Funnel \& Retention Analysis, ICE Prioritization, A/B Testing, KPI Tracking, Product Analytics (AARRR) \\
+
+\textbf{Technical:} &
+SQL (JOINs, Window Functions, CTEs), Python (Pandas, Streamlit), TypeScript, Next.js, APIs, Full-Stack Prototyping, Data Analysis \\
+
+\textbf{AI:} &
+LLMs, Agentic Workflow, AI-Assisted Prototyping, RAG Fundamentals \\
+
+\end{tabularx}
+
+
+
+%----------------------------------------------------------------------------------------
+%   PROJECTS
+%----------------------------------------------------------------------------------------
+
+\section{Projects}
+
+
+%----------------------------------------------------------------------------------------
+%   PROJECT 1 - AI PRD Generator
+%----------------------------------------------------------------------------------------
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+
+\textbf{AI PRD Generator Tool} \textemdash\ \textit{Full-Stack AI Product Tool} &
+\hfill \href{https://mujtaba-prd.vercel.app/}{Live Demo $\nearrow$}\\[3.75pt]
+
+\multicolumn{2}{@{}X@{}}{
+
+\begin{itemize}[nosep,leftmargin=1em,itemsep=10pt]
+
+\item[$\bullet$] Shipped a \textbf{live AI tool} that converts a problem statement into a structured, 7-section PRD in under \textbf{20 seconds} built with \textbf{Next.js, TypeScript, and Tailwind}, deployed on Vercel.
+
+\item[$\bullet$] Reduced LLM output hallucination via a \textbf{strict JSON prompt schema} + \textbf{auto-retry validation layer} (up to 2 retries), catching missing sections, non-quantitative metrics, and malformed JSON before render.
+
+\item[$\bullet$] Benchmarked output quality using \textbf{LLM-as-judge} across 10 synthetic problem statements (SaaS, fintech, health, EdTech) achieved \textbf{4.83/5.0} average across all 7 PRD dimensions.
+
+\item[$\bullet$] Designed a \textbf{split-screen UX} with streaming generation, version history, live editing, and Quick Refine reducing prompt-rewrite friction for iterative PRD refinement.
+
+\end{itemize}
+
+}
+
+\end{tabularx}
+
+\vspace{10pt}
+
+%----------------------------------------------------------------------------------------
+%   PROJECT 2 - Rapido Teardown
+%----------------------------------------------------------------------------------------
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+
+\textbf{Ownly by Rapido \textemdash\ Product Teardown \& PRD} &
+\hfill \href{https://drive.google.com/drive/folders/1f7JIWPRwlcHTbto9-NhSCaKxKleOFj6i}{Project Link $\nearrow$}\\[3.75pt]
+
+\multicolumn{2}{@{}X@{}}{
+
+\begin{itemize}[nosep,leftmargin=1em,itemsep=7pt]
+
+\item[$\bullet$] Identified \textbf{6 conversion friction points} across a 7-touchpoint user journey (discovery $\rightarrow$ onboarding $\rightarrow$ order $\rightarrow$ post-delivery); prioritized using \textbf{ICE scoring}, surfacing SSO onboarding as highest-leverage fix (\textbf{ICE: 8.0/10}).
+
+\item[$\bullet$] Authored a \textbf{full PRD} for the SSO fix including user stories, acceptance criteria, and success metrics targeting registration completion rate and Time-to-First-Click.
+
+\item[$\bullet$] Designed \textbf{low-fidelity wireframes} for an ``Explore First, Geofence Later'' flow with manual address fallback resolving GPS permission dead-ends blocking new-user activation.
+
+\item[$\bullet$] Built an \textbf{A/B test plan} with defined hypothesis, control/treatment split, and sample size to validate the onboarding fix before full rollout.
+
+\end{itemize}
+
+}
+
+\end{tabularx}
+
+\vspace{10pt}
+
+%----------------------------------------------------------------------------------------
+%   PROJECT 3 - SQL Analytics
+%----------------------------------------------------------------------------------------
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+
+\textbf{Olist E-Commerce SQL Analytics \& Dashboard} &
+\hfill \href{https://github.com/MujtabaJ30/SQL-Product-Analytics}{GitHub $\nearrow$}\\[3.75pt]
+
+\multicolumn{2}{@{}X@{}}{
+
+\begin{itemize}[nosep,leftmargin=1em,itemsep=7pt]
+
+\item[$\bullet$] Surfaced that \textbf{25\% of customers drive 48\% of revenue} while another 25\% are at-risk via \textbf{RFM segmentation} using CTEs and NTILE window functions on \textbf{100K orders across 9 tables}; flagged \textbf{\$1.5M in recoverable value}.
+
+\item[$\bullet$] Quantified that \textbf{late deliveries drop review scores by 1.72 points} (4.29 $\rightarrow$ 2.57) using multi-table JOINs and CASE segmentation with furniture/home showing the highest late-delivery rates.
+
+\item[$\bullet$] Delivered \textbf{10 product-focused SQL queries} spanning funnel analysis, revenue trends, payment behavior, and delivery performance, packaged in an interactive \textbf{Streamlit dashboard} (4 filterable tabs, live KPI cards) deployed on Streamlit Cloud.
+
+\end{itemize}
+
+}
+
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%   EDUCATION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+
+2021 -- 2025 &
+\textbf{Ahmedabad University} \\
+&
+B.S. (Hons.) Computer Science \\
+
+&
+Relevant Coursework:
+\textbf{Statistics},
+\textbf{Machine Learning},
+\textbf{Probability and Stochastic Processes},
+\textbf{Human Computer Interaction} \\
+
+\end{tabularx}
+
+\end{document}
