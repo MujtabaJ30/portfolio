@@ -3,11 +3,12 @@
 import { Envelope, LinkedinLogo, GithubLogo } from "@phosphor-icons/react";
 import { Button } from "@/app/components/Button";
 import { contactLinks } from "@/app/lib/data";
+import { SectionReveal } from "@/app/components/SectionReveal";
 
 export function Contact() {
   return (
     <section id="contact" className="px-6 py-24 md:px-12 lg:px-20">
-      <div className="mx-auto max-w-4xl text-center">
+      <SectionReveal className="mx-auto max-w-4xl text-center">
         <p className="font-mono text-sm uppercase tracking-wide text-accent">
           Let&apos;s Connect
         </p>
@@ -42,7 +43,7 @@ export function Contact() {
             GitHub
           </Button>
         </div>
-      </div>
+      </SectionReveal>
     </section>
   );
 }
