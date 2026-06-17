@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatePresence } from "motion/react";
 import { projects } from "@/app/lib/data";
 import { Project } from "@/app/types";
 import { ProjectCard } from "@/app/components/ProjectCard";
@@ -16,7 +17,7 @@ export function Projects() {
   return (
     <section
       id="projects"
-      className="scroll-mt-24 px-6 py-24 md:px-12 lg:px-20"
+      className="px-6 py-24 md:px-12 lg:px-20"
     >
       <div className="mx-auto max-w-7xl">
         <SectionReveal className="mb-16 max-w-2xl">
@@ -42,9 +43,11 @@ export function Projects() {
         </div>
       </div>
 
-      {selectedProject && (
-        <ProjectModal project={selectedProject} onClose={closeProject} />
-      )}
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectModal project={selectedProject} onClose={closeProject} />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

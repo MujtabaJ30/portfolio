@@ -1,6 +1,6 @@
 "use client";
 
-import { Envelope, LinkedinLogo, GithubLogo, DownloadSimple } from "@phosphor-icons/react";
+import { Envelope, LinkedinLogo, GithubLogo } from "@phosphor-icons/react";
 import { Button } from "@/app/components/Button";
 import { contactLinks } from "@/app/lib/data";
 import { SectionReveal } from "@/app/components/SectionReveal";
@@ -34,12 +34,11 @@ export function Contact() {
             Send an Email
           </Button>
           <Button
-            href="/resume.pdf"
+            href={contactLinks.github}
             variant="secondary"
-            icon={<DownloadSimple className="h-4 w-4" weight="bold" />}
-            download
+            icon={<GithubLogo className="h-4 w-4" weight="bold" />}
           >
-            Download Resume
+            GitHub
           </Button>
         </div>
       </SectionReveal>

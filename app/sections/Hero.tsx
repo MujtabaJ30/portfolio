@@ -58,32 +58,22 @@ function AnimatedParagraph({ text }: { text: string }) {
 }
 
 const teaserItems = [
-  { id: "rapido-teardown", label: "Prototype work" },
-  { id: "ai-prd-generator", label: "PRD work" },
+  { id: "ai-prd-generator", label: "Prototype work" },
+  { id: "rapido-teardown", label: "Product sense" },
   { id: "olist-sql-analytics", label: "SQL and Data work" },
 ];
 
 export function Hero() {
   const { openProject } = useProjectModal();
 
-  const scrollToProjects = () => {
-    const element = document.getElementById("projects");
-    if (!element) return;
-
-    const headerOffset = 80;
-    const top =
-      element.getBoundingClientRect().top + window.scrollY - headerOffset;
-    window.scrollTo({ top, behavior: "smooth" });
-  };
-
-  const handleViewWork = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-    scrollToProjects();
-  };
-
   const handleTeaserClick = (id: string) => {
-    openProject(id);
-    scrollToProjects();
+    const element = document.getElementById("projects");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    setTimeout(() => {
+      openProject(id);
+    }, 600);
   };
 
   return (
@@ -115,13 +105,13 @@ export function Hero() {
             }}
             className="mt-10 flex flex-wrap items-center gap-4"
           >
-            <Button
+            <a
               href="#projects"
-              onClick={handleViewWork}
-              icon={<ArrowDown className="h-4 w-4" weight="bold" />}
+              className="inline-flex items-center justify-center gap-2 rounded bg-primary px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-hover"
             >
               {heroContent.cta}
-            </Button>
+              <ArrowDown className="h-4 w-4" weight="bold" />
+            </a>
 
             <Button
               href="/resume.pdf"
@@ -201,6 +191,7 @@ export function Hero() {
                     src={project.thumbnail}
                     alt={project.title}
                     fill
+                    sizes="112px"
                     className="object-cover transition-transform duration-500 group-hover:scale-[1.05]"
                   />
                 </div>

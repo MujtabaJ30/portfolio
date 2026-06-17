@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import { X, ArrowUpRight } from "@phosphor-icons/react";
+import { motion } from "motion/react";
 import { Project } from "@/app/types";
 
 interface ProjectModalProps {
@@ -32,14 +33,24 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
   ].filter((item) => item.href);
 
   return (
-    <div
+    <motion.div
+      key="modal-overlay"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] as const }}
       className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-bg/90 p-4 backdrop-blur-sm sm:p-6"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="project-modal-title"
     >
-      <div
+      <motion.div
+        key="modal-panel"
+        initial={{ opacity: 0, scale: 0.97, y: 16 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.97, y: 16 }}
+        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] as const }}
         className="relative my-8 w-full max-w-4xl overflow-hidden rounded-2xl border border-border bg-surface"
         onClick={(e) => e.stopPropagation()}
       >
@@ -164,8 +175,8 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
           )}
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
