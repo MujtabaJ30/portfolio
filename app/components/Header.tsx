@@ -61,7 +61,7 @@ export function Header() {
               {item.label}
             </a>
           ))}
-          <div className="ml-2">
+          <div className="ml-2 flex items-center gap-1">
             <ThemeToggle />
           </div>
         </nav>

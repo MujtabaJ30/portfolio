@@ -7,6 +7,7 @@ import {
   Globe,
   PresentationChart,
   Folder,
+  FileText,
 } from "@phosphor-icons/react";
 import { Project } from "@/app/types";
 
@@ -30,6 +31,11 @@ const linkConfig: {
     key: "github",
     label: "GitHub",
     icon: <GithubLogo className="h-3.5 w-3.5" weight="bold" />,
+  },
+  {
+    key: "pdf",
+    label: "Case Study",
+    icon: <FileText className="h-3.5 w-3.5" weight="bold" />,
   },
   {
     key: "drive",
@@ -75,7 +81,7 @@ export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
       </button>
 
       <div className={`order-2 lg:order-none ${isReversed ? "lg:order-1" : ""}`}>
-        <p className="text-sm font-medium text-primary">{project.tagline}</p>
+        {project.tagline && <p className="text-sm font-medium text-primary">{project.tagline}</p>}
         <h3 className="mt-2 text-3xl font-semibold tracking-tight text-text">
           {project.title}
         </h3>
@@ -111,7 +117,9 @@ export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
                 className="group/link inline-flex items-center gap-1.5 rounded border border-border bg-surface px-3 py-1.5 text-sm text-text transition-colors hover:border-primary/50 hover:bg-surface-hover hover:text-primary"
               >
                 {item.icon}
-                {item.label}
+                {item.key === "live" && project.links.liveLabel
+                  ? project.links.liveLabel
+                  : item.label}
                 <ArrowUpRight
                   className="h-3.5 w-3.5 transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
                   weight="bold"

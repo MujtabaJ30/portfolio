@@ -14,7 +14,9 @@ export interface Project {
   stack: string[];
   links: {
     live?: string;
+    liveLabel?: string;
     github?: string;
+    pdf?: string;
     drive?: string;
     ppt?: string;
   };

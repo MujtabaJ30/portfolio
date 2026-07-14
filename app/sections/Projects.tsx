@@ -17,7 +17,7 @@ export function Projects() {
   return (
     <section
       id="projects"
-      className="px-6 py-24 md:px-12 lg:px-20"
+      className="px-6 py-12 md:px-12 md:py-16 lg:px-20 lg:py-20"
     >
       <div className="mx-auto max-w-7xl">
         <SectionReveal className="mb-16 max-w-2xl">

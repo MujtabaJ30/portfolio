@@ -59,9 +59,9 @@ function AnimatedParagraph({ text }: { text: string }) {
 }
 
 const teaserItems = [
-  { id: "ai-prd-generator", label: "Prototype work" },
-  { id: "rapido-teardown", label: "Product sense" },
-  { id: "olist-sql-analytics", label: "SQL and Data work" },
+  { id: "dealflow", label: "Product design" },
+  { id: "x-split", label: "Shipped product" },
+  { id: "invoice-exception-handler", label: "AI workflow" },
 ];
 
 export function Hero() {
@@ -78,7 +78,7 @@ export function Hero() {
   };
 
   return (
-    <section className="flex min-h-screen flex-col justify-center px-6 pt-24 pb-24 md:px-12 lg:px-20">
+    <section className="flex min-h-[70vh] flex-col justify-center px-6 pt-16 pb-12 md:min-h-[85vh] md:px-12 md:pt-20 md:pb-16 lg:min-h-[90vh] lg:px-20 lg:pb-20">
       <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-2">
         <div className="max-w-3xl">
           <motion.p

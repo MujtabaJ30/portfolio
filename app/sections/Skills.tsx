@@ -1,6 +1,6 @@
 "use client";
 
-import { Compass, Code, Brain, IconProps } from "@phosphor-icons/react";
+import { Compass, Code, Brain, Wrench, IconProps } from "@phosphor-icons/react";
 import { skillGroups } from "@/app/lib/data";
 import { SectionReveal } from "@/app/components/SectionReveal";
 
@@ -8,13 +8,14 @@ const iconMap: Record<string, React.ComponentType<IconProps>> = {
   Compass,
   Code,
   Brain,
+  Wrench,
 };
 
 export function Skills() {
   return (
     <section
       id="skills"
-      className="border-y border-border bg-surface/30 px-6 py-24 md:px-12 lg:px-20"
+      className="border-y border-border bg-surface/30 px-6 py-12 md:px-12 md:py-16 lg:px-20 lg:py-20"
     >
       <div className="mx-auto max-w-7xl">
         <SectionReveal className="mb-16 max-w-2xl">
@@ -23,12 +24,13 @@ export function Skills() {
             Skills across the product stack
           </h2>
           <p className="mt-4 text-lg text-muted">
-            Product sense, technical fluency, and AI tools. I pick the right mix
-            for the problem instead of forcing the same playbook every time.
+            Product sense, technical fluency, and the right tools for the
+            problem. I pick what fits instead of forcing the same playbook every
+            time.
           </p>
         </SectionReveal>
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {skillGroups.map((group, index) => {
             const Icon = iconMap[group.icon];
             return (

@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Mujtaba Jafri — Product Manager",
   description:
-    "Product manager portfolio showcasing shipped products, teardowns, and data-driven product decisions.",
+    "Product manager portfolio showcasing shipped products, case studies, and product thinking.",
 };
 
 export default function RootLayout({

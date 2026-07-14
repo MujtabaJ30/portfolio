@@ -7,7 +7,7 @@ import { SectionReveal } from "@/app/components/SectionReveal";
 
 export function Contact() {
   return (
-    <section id="contact" className="px-6 py-24 md:px-12 lg:px-20">
+    <section id="contact" className="px-6 py-12 md:px-12 md:py-16 lg:px-20 lg:py-20">
       <SectionReveal className="mx-auto max-w-4xl text-center">
         <p className="text-base font-medium text-primary">Let&apos;s Connect</p>
         <h2 className="mt-3 text-4xl font-semibold tracking-tight text-text md:text-5xl lg:text-6xl">

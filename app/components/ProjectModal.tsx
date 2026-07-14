@@ -26,8 +26,13 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
   }, [onClose]);
 
   const linkItems = [
-    { key: "live", label: "Live Demo", href: project.links.live },
+    {
+      key: "live",
+      label: project.links.liveLabel || "Live Demo",
+      href: project.links.live,
+    },
     { key: "github", label: "GitHub", href: project.links.github },
+    { key: "pdf", label: "Case Study", href: project.links.pdf },
     { key: "drive", label: "Project Drive", href: project.links.drive },
     { key: "ppt", label: "Presentation", href: project.links.ppt },
   ].filter((item) => item.href);
@@ -73,9 +78,11 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
         </div>
 
         <div className="p-6 sm:p-10">
-          <p className="font-mono text-sm uppercase tracking-wide text-primary">
-            {project.tagline}
-          </p>
+          {project.tagline && (
+            <p className="font-mono text-sm uppercase tracking-wide text-primary">
+              {project.tagline}
+            </p>
+          )}
           <h2
             id="project-modal-title"
             className="mt-2 text-3xl font-semibold tracking-tight text-text sm:text-4xl"
