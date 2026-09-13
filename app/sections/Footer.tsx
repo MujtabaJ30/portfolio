@@ -2,13 +2,10 @@ import { contactLinks } from "@/app/lib/data";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border px-6 py-8 md:px-12 lg:px-20">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 sm:flex-row">
-        <p className="text-sm text-muted">
-          © {new Date().getFullYear()} Mujtaba Jafri. Built with Next.js,
-          Tailwind CSS, and Phosphor Icons.
-        </p>
-        <div className="flex gap-6 text-sm text-muted">
+    <footer className="border-t border-border px-5 py-6 sm:px-8 lg:px-12">
+      <div className="mx-auto flex max-w-[1400px] flex-col gap-4 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+        <p>© {new Date().getFullYear()} Mujtaba Jafri</p>
+        <div className="flex flex-wrap gap-x-6 gap-y-2">
           <a
             href={`mailto:${contactLinks.email}`}
             className="transition-colors hover:text-primary"

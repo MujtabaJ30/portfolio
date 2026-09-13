@@ -1,47 +1,64 @@
 "use client";
 
-import { Envelope, LinkedinLogo, GithubLogo } from "@phosphor-icons/react";
-import { Button } from "@/app/components/Button";
+import {
+  ArrowUpRight,
+  Envelope,
+  GithubLogo,
+  LinkedinLogo,
+} from "@phosphor-icons/react";
 import { contactLinks } from "@/app/lib/data";
-import { SectionReveal } from "@/app/components/SectionReveal";
 
 export function Contact() {
   return (
-    <section id="contact" className="px-6 py-12 md:px-12 md:py-16 lg:px-20 lg:py-20">
-      <SectionReveal className="mx-auto max-w-4xl text-center">
-        <p className="text-base font-medium text-primary">Let&apos;s Connect</p>
-        <h2 className="mt-3 text-4xl font-semibold tracking-tight text-text md:text-5xl lg:text-6xl">
-          Interested in working together?
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
-          I&apos;m open to product management roles and side projects. If you
-          want someone who ships, analyzes, and works with data, let&apos;s
-          talk.
-        </p>
-
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <Button
-            href={contactLinks.linkedin}
-            icon={<LinkedinLogo className="h-4 w-4" weight="bold" />}
-          >
-            LinkedIn
-          </Button>
-          <Button
-            href={`mailto:${contactLinks.email}`}
-            variant="secondary"
-            icon={<Envelope className="h-4 w-4" weight="bold" />}
-          >
-            Send an Email
-          </Button>
-          <Button
-            href={contactLinks.github}
-            variant="secondary"
-            icon={<GithubLogo className="h-4 w-4" weight="bold" />}
-          >
-            GitHub
-          </Button>
+    <section id="contact" className="px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+      <div className="mx-auto grid max-w-[1400px] gap-14 border-t border-border pt-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24 lg:pt-10">
+        <div>
+          <p className="text-xs font-medium uppercase tracking-[0.14em] text-primary">
+            Contact
+          </p>
+          <h2 className="mt-6 max-w-xl text-balance text-4xl font-medium leading-[1.02] tracking-[-0.035em] text-text sm:text-5xl lg:text-7xl">
+            If the problem is worth solving, let&apos;s talk.
+          </h2>
         </div>
-      </SectionReveal>
+
+        <div className="max-w-xl lg:pt-14">
+          <p className="text-lg leading-8 text-muted sm:text-xl sm:leading-9">
+            I&apos;m looking for product roles where clear thinking, careful execution, and a willingness to build are useful.
+          </p>
+
+          <a
+            href={`mailto:${contactLinks.email}`}
+            className="mt-8 inline-flex min-h-14 w-full items-center justify-between rounded-full bg-text px-6 text-base font-medium text-bg transition-colors hover:bg-primary hover:text-text sm:w-auto sm:min-w-[22rem]"
+          >
+            <span className="inline-flex items-center gap-3">
+              <Envelope className="h-5 w-5" weight="bold" />
+              {contactLinks.email}
+            </span>
+            <ArrowUpRight className="h-5 w-5" weight="bold" />
+          </a>
+
+          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium text-text">
+            <a
+              href={contactLinks.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 transition-colors hover:text-primary"
+            >
+              <LinkedinLogo className="h-4 w-4" weight="bold" />
+              LinkedIn
+            </a>
+            <a
+              href={contactLinks.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 transition-colors hover:text-primary"
+            >
+              <GithubLogo className="h-4 w-4" weight="bold" />
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
