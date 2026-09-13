@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, DownloadSimple } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "motion/react";
-import { heroContent, projects } from "@/app/lib/data";
+import { projects } from "@/app/lib/data";
 import { smoothScrollTo } from "@/app/lib/scroll";
 
 export function Hero() {
@@ -29,10 +29,10 @@ export function Hero() {
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] as const }}
             className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium uppercase tracking-[0.14em] text-muted"
           >
-            <span className="text-primary">{heroContent.role} / builder</span>
+            <span className="text-primary">Product management intern</span>
             <span className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
-              Open to product roles
+              Open to internships
             </span>
           </motion.p>
 
@@ -41,9 +41,9 @@ export function Hero() {
             initial={reduceMotion ? false : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] as const }}
-            className="mt-7 max-w-[14ch] text-balance text-[clamp(3.6rem,5.5vw,5.5rem)] font-medium leading-[0.94] tracking-[-0.04em] text-text"
+            className="mt-7 max-w-none text-balance text-[clamp(3.5rem,5.2vw,5.25rem)] font-medium leading-[0.96] tracking-[-0.04em] text-text"
           >
-            I make product <span className="text-primary">decisions visible.</span>
+            I research, define, and build.
           </motion.h1>
 
           <motion.p
@@ -52,7 +52,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] as const }}
             className="mt-7 max-w-[34rem] text-lg leading-8 text-muted sm:text-xl sm:leading-9"
           >
-            I turn fuzzy product problems into decisions people can use, then build enough to find out if they work.
+            I research users, write product specs, and build prototypes to test a direction.
           </motion.p>
 
           <motion.div
@@ -66,7 +66,7 @@ export function Hero() {
               onClick={handleViewWork}
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-text px-5 text-sm font-medium text-bg transition-colors hover:bg-primary hover:text-text"
             >
-              See the work
+              View work
               <ArrowDown className="h-4 w-4" weight="bold" />
             </a>
 
@@ -80,15 +80,6 @@ export function Hero() {
             </a>
           </motion.div>
 
-          <motion.div
-            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.42, ease: [0.22, 1, 0.36, 1] as const }}
-            className="mt-8 flex items-center gap-3 text-sm text-muted"
-          >
-            <span className="h-px w-8 bg-primary" aria-hidden="true" />
-            <span>Research, systems, and software.</span>
-          </motion.div>
         </div>
 
         <motion.div
@@ -119,7 +110,7 @@ export function Hero() {
               <figcaption className="flex items-center justify-between gap-4 border-t border-border px-5 py-4">
                 <div>
                   <p className="text-xs font-medium uppercase tracking-[0.14em] text-primary">
-                    Product concept
+                    DealFlow / prototype
                   </p>
                   <p className="mt-1 text-base font-medium text-text">{heroProject.title}</p>
                 </div>
@@ -131,7 +122,7 @@ export function Hero() {
             </figure>
           </Link>
           <p className="mt-4 max-w-sm text-sm leading-6 text-muted">
-            A portfolio built from product problems, not personal branding.
+            A working prototype for managing creator-brand deals.
           </p>
         </motion.div>
       </div>

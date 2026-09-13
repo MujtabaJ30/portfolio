@@ -11,10 +11,10 @@ export function Projects() {
       <div className="mx-auto max-w-[1400px]">
         <SectionReveal className="mb-20 max-w-3xl lg:mb-28">
           <h2 className="text-balance text-4xl font-medium leading-[1.02] tracking-[-0.035em] text-text sm:text-5xl lg:text-7xl">
-            Five projects, one way of working.
+            Projects
           </h2>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-muted sm:text-xl sm:leading-9">
-            Get close to the real constraint, make the trade-off explicit, and build the smallest useful thing.
+            Product concepts, prototypes, live tools, and a teardown.
           </p>
         </SectionReveal>
 

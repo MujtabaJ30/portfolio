@@ -2,20 +2,20 @@ import { skillGroups } from "@/app/lib/data";
 
 const principles = [
   {
-    title: "Watch what people actually do.",
-    copy: "The workflow is usually more honest than the brief. I start there, with behavior, workarounds, and the moments people quietly avoid.",
+    title: "Start with the current workflow.",
+    copy: "I look at the tools, workarounds, and handoffs people already use before proposing a new flow.",
   },
   {
-    title: "Name the constraint.",
-    copy: "A sharp problem is more useful than a large opportunity area. I make the decision boundary clear before proposing a solution.",
+    title: "Define one problem.",
+    copy: "I narrow a broad opportunity into a problem I can explain, investigate, and measure.",
   },
   {
-    title: "Build the smallest useful proof.",
-    copy: "A prototype, a rule engine, or a working extension can answer a question faster than a polished deck can.",
+    title: "Test with something concrete.",
+    copy: "I use wireframes, prototypes, or code to learn before adding more scope.",
   },
   {
-    title: "Keep the trade-off visible.",
-    copy: "Every choice leaves something out. I document what we gained, what we accepted, and what I would test next.",
+    title: "Write down the trade-off.",
+    copy: "I record what a decision improves, what it leaves out, and what I would check next.",
   },
 ];
 
@@ -32,10 +32,10 @@ export function Skills() {
               Approach
             </p>
             <h2 className="mt-6 text-balance text-4xl font-medium leading-[1.02] tracking-[-0.035em] text-text sm:text-5xl lg:text-6xl">
-              Good product work starts before the screen.
+              How I work on a product problem.
             </h2>
             <p className="mt-6 max-w-lg text-lg leading-8 text-muted">
-              I like the part before the answer, when the problem is still specific enough to change your mind.
+              I start with the current workflow, choose a narrow question, and build enough to test it.
             </p>
           </div>
 
@@ -64,10 +64,10 @@ export function Skills() {
         <div className="mt-24 border-t border-border pt-6 lg:mt-32">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
             <h3 className="text-xl font-medium tracking-[-0.02em] text-text">
-              Working toolkit
+              Tools I use
             </h3>
             <p className="text-sm text-muted">
-              The tools follow the question, not the other way around.
+              A short list of tools and methods I have used in projects.
             </p>
           </div>
           <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
