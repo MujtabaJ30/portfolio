@@ -88,6 +88,24 @@ export default async function CaseStudyPage({
               <p className="mt-8 max-w-xl text-lg leading-8 text-muted">
                 {project.summary}
               </p>
+              {linkItems.length > 0 && (
+                <nav
+                  className="mt-8 flex flex-wrap gap-x-5 gap-y-3 text-sm font-medium"
+                  aria-label="Project links"
+                >
+                  {linkItems.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-text transition-colors hover:text-primary"
+                    >
+                      {item.label} <span aria-hidden="true">↗</span>
+                    </a>
+                  ))}
+                </nav>
+              )}
             </div>
 
             <figure className="overflow-hidden rounded-2xl border border-border bg-surface">
@@ -231,25 +249,12 @@ export default async function CaseStudyPage({
                 {nextProject.title}
               </h2>
             </div>
-            <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium">
-              {linkItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted transition-colors hover:text-primary"
-                >
-                  {item.label} <span aria-hidden="true">↗</span>
-                </a>
-              ))}
-              <Link
-                href={`/work/${nextProject.id}`}
-                className="text-text transition-colors hover:text-primary"
-              >
-                Next project <span aria-hidden="true">↗</span>
-              </Link>
-            </div>
+            <Link
+              href={`/work/${nextProject.id}`}
+              className="text-sm font-medium text-text transition-colors hover:text-primary"
+            >
+              Next project <span aria-hidden="true">↗</span>
+            </Link>
           </div>
         </section>
       </div>
