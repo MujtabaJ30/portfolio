@@ -1,5 +1,7 @@
 # Decisions Log
 
+> STATUS (2026-09-13): Stale. Entries below cover the old amber/3-project direction. Current state lives in `FUTURE-REFERENCE.md`. Kept for history.
+
 ## 2026-06-17 — Initial Planning
 
 ### Site Structure

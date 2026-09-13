@@ -34,3 +34,6 @@ pnpm-debug.log*
 Thumbs.db
 
 dev-out.log
+
+# Playwright MCP session artifacts (snapshots, console logs, screenshots)
+.playwright-mcp/

@@ -1,5 +1,7 @@
 # PM Portfolio Website — Project Plan
 
+> STATUS (2026-09-13): Stale. This plan describes the old design (amber accent, 3 projects). The live site now uses Tesla blue `#3E6AE1` with 5 projects. `FUTURE-REFERENCE.md` is the current source of truth. Kept for history.
+
 ## The Brief
 
 **Owner:** Mujtaba Jafri

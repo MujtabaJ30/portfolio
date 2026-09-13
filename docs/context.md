@@ -1,5 +1,7 @@
 # Context Log
 
+> STATUS (2026-09-13): Early entries describe the old amber/3-project plan. Current source of truth is `FUTURE-REFERENCE.md`. New entries go at the bottom.
+
 ## 2026-06-17 — Project Kickoff
 
 ### What We Did
@@ -110,3 +112,16 @@ public/images/     # Project screenshots
 ### Next Steps
 - Deploy to Vercel
 - Optional: Lighthouse audit and accessibility refinements
+
+## 2026-09-13 — Tooling Fixes + Doc Audit
+
+### What Was Done
+- Fixed `web-researcher` subagent model: `opencode/deepseek-v4-flash-free` (retired upstream) is now `opencode/muse-spark-1.3-contributor-free`
+- Added Playwright MCP (own headed Chromium, isolated profile) to global `opencode.json`; `opencode mcp list` shows it connected, `pencil` still disabled
+- Audited docs: `FUTURE-REFERENCE.md` is current (blue, 5 projects); `docs/plan.md`, `docs/decisions.md`, and older entries in this file describe the retired amber/3-project plan, so each now carries a stale banner
+- Delivered code-based design critique (dark default vs Tesla light system, hero teaser split, flat type hierarchy); visual screenshot pass still pending
+
+### Pending
+- Restart OpenCode so the fixed researcher model and Playwright browser tools load into the live session
+- Confirm direction: light-first vs dark-default, keep or cut hero teasers, one primary visitor action
+- Skills path mismatch: project skills live in `.agents/skills/`, global AGENTS.md points to `.opencode/skills/`
