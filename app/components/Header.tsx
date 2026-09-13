@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ArrowUpRight, List, X } from "@phosphor-icons/react";
+import { usePathname, useRouter } from "next/navigation";
 import { smoothScrollTo } from "@/app/lib/scroll";
 
 const navItems = [
@@ -12,6 +13,8 @@ const navItems = [
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -30,6 +33,12 @@ export function Header() {
   ) => {
     e.preventDefault();
     setMenuOpen(false);
+
+    if (pathname !== "/") {
+      router.push(`/${href}`);
+      return;
+    }
+
     await smoothScrollTo(href, 600);
   };
 
@@ -42,6 +51,12 @@ export function Header() {
           onClick={async (e) => {
             e.preventDefault();
             setMenuOpen(false);
+
+            if (pathname !== "/") {
+              router.push("/");
+              return;
+            }
+
             await smoothScrollTo("body", 400, 0);
           }}
         >
