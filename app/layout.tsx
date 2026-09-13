@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/app/components/ThemeProvider";
-import { ThemeScript } from "@/app/components/ThemeScript";
 import { ProjectModalProvider } from "@/app/components/ProjectModalProvider";
 import { Header } from "@/app/components/Header";
 
@@ -19,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Mujtaba Jafri — Product Manager",
   description:
-    "Product manager portfolio showcasing shipped products, case studies, and product thinking.",
+    "Mujtaba Jafri is a product manager who turns ambiguous product problems into clear decisions and useful software.",
 };
 
 export default function RootLayout({
@@ -28,19 +26,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-      <head>
-        <ThemeScript />
-      </head>
+    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
-        <ThemeProvider>
-          <ProjectModalProvider>
-            <Header />
-            {children}
-          </ProjectModalProvider>
-        </ThemeProvider>
+        <ProjectModalProvider>
+          <Header />
+          {children}
+        </ProjectModalProvider>
       </body>
     </html>
   );
