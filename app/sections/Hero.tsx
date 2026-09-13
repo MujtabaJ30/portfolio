@@ -1,219 +1,138 @@
 "use client";
 
 import Image from "next/image";
-import {
-  ArrowDown,
-  LinkedinLogo,
-  DownloadSimple,
-  ArrowUpRight,
-} from "@phosphor-icons/react";
-import { motion } from "motion/react";
-import { Button } from "@/app/components/Button";
-import { heroContent, contactLinks, projects } from "@/app/lib/data";
-import { useProjectModal } from "@/app/components/ProjectModalProvider";
+import Link from "next/link";
+import { ArrowDown, ArrowUpRight, DownloadSimple } from "@phosphor-icons/react";
+import { motion, useReducedMotion } from "motion/react";
+import { heroContent, projects } from "@/app/lib/data";
 import { smoothScrollTo } from "@/app/lib/scroll";
 
-function AnimatedName({ text }: { text: string }) {
-  return (
-    <span className="inline-flex flex-wrap">
-      {text.split("").map((char, index) => (
-        <motion.span
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.4,
-            delay: 0.1 + index * 0.03,
-            ease: [0.22, 1, 0.36, 1] as const,
-          }}
-          className="inline-block"
-        >
-          {char === " " ? "\u00A0" : char}
-        </motion.span>
-      ))}
-    </span>
-  );
-}
-
-function AnimatedParagraph({ text }: { text: string }) {
-  return (
-    <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
-      {text.split(" ").map((word, index) => (
-        <span key={index} className="mr-[0.25em] inline-block overflow-hidden">
-          <motion.span
-            initial={{ opacity: 0, y: "100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.4,
-              delay: 0.5 + index * 0.015,
-              ease: [0.22, 1, 0.36, 1] as const,
-            }}
-            className="inline-block"
-          >
-            {word}
-          </motion.span>
-        </span>
-      ))}
-    </p>
-  );
-}
-
-const teaserItems = [
-  { id: "dealflow", label: "Product design" },
-  { id: "x-split", label: "Shipped product" },
-  { id: "invoice-exception-handler", label: "AI workflow" },
-];
-
 export function Hero() {
-  const { openProject } = useProjectModal();
+  const reduceMotion = useReducedMotion();
+  const heroProject = projects[0];
 
-  const handleViewWork = async (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
+  const handleViewWork = async (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
     await smoothScrollTo("#projects", 700);
   };
 
-  const handleTeaserClick = async (id: string) => {
-    await smoothScrollTo(`#${id}`, 700);
-    openProject(id);
-  };
-
   return (
-    <section className="flex min-h-[70vh] flex-col justify-center px-6 pt-16 pb-12 md:min-h-[85vh] md:px-12 md:pt-20 md:pb-16 lg:min-h-[90vh] lg:px-20 lg:pb-20">
-      <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-2">
-        <div className="max-w-3xl">
+    <section
+      aria-labelledby="hero-title"
+      className="overflow-hidden px-5 pb-20 pt-28 sm:px-8 lg:min-h-[calc(100dvh-72px)] lg:px-12 lg:pb-14 lg:pt-32"
+    >
+      <div className="mx-auto grid w-full max-w-[1400px] items-center gap-14 lg:grid-cols-[minmax(0,0.94fr)_minmax(420px,1.06fr)] lg:gap-16">
+        <div className="max-w-[680px]">
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
-            className="mb-4 text-base font-medium text-primary md:text-lg"
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] as const }}
+            className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium uppercase tracking-[0.14em] text-muted"
           >
-            {heroContent.role}
+            <span className="text-primary">{heroContent.role} / builder</span>
+            <span className="flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
+              Open to product roles
+            </span>
           </motion.p>
 
-          <h1 className="text-5xl font-semibold tracking-tight text-text md:text-6xl lg:text-7xl">
-            <AnimatedName text={heroContent.name} />
-          </h1>
+          <motion.h1
+            id="hero-title"
+            initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] as const }}
+            className="mt-7 max-w-[14ch] text-balance text-[clamp(3.6rem,5.5vw,5.5rem)] font-medium leading-[0.94] tracking-[-0.04em] text-text"
+          >
+            I make product <span className="text-primary">decisions visible.</span>
+          </motion.h1>
 
-          <AnimatedParagraph text={heroContent.philosophy} />
+          <motion.p
+            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] as const }}
+            className="mt-7 max-w-[34rem] text-lg leading-8 text-muted sm:text-xl sm:leading-9"
+          >
+            I turn fuzzy product problems into decisions people can use, then build enough to find out if they work.
+          </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: 1.2,
-              ease: [0.22, 1, 0.36, 1] as const,
-            }}
-            className="mt-10 flex flex-wrap items-center gap-4"
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] as const }}
+            className="mt-9 flex flex-wrap items-center gap-3"
           >
             <a
               href="#projects"
               onClick={handleViewWork}
-              className="inline-flex items-center justify-center gap-2 rounded bg-primary px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-hover"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-text px-5 text-sm font-medium text-bg transition-colors hover:bg-primary hover:text-text"
             >
-              {heroContent.cta}
+              See the work
               <ArrowDown className="h-4 w-4" weight="bold" />
             </a>
 
-            <Button
+            <a
               href="/resume.pdf"
-              variant="secondary"
-              icon={<DownloadSimple className="h-4 w-4" weight="bold" />}
               download
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border px-5 text-sm font-medium text-text transition-colors hover:border-text hover:bg-surface-hover"
             >
+              <DownloadSimple className="h-4 w-4" weight="bold" />
               Download Resume
-            </Button>
-
-            <Button
-              href={contactLinks.linkedin}
-              variant="secondary"
-              icon={<LinkedinLogo className="h-4 w-4" weight="bold" />}
-            >
-              LinkedIn
-            </Button>
+            </a>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: 1.35,
-              ease: [0.22, 1, 0.36, 1] as const,
-            }}
-            className="mt-12 flex flex-wrap gap-6 text-sm text-muted"
+            transition={{ duration: 0.55, delay: 0.42, ease: [0.22, 1, 0.36, 1] as const }}
+            className="mt-8 flex items-center gap-3 text-sm text-muted"
           >
-            <a
-              href={`mailto:${contactLinks.email}`}
-              className="transition-colors hover:text-primary"
-            >
-              {contactLinks.email}
-            </a>
-            <a
-              href={contactLinks.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-primary"
-            >
-              LinkedIn
-            </a>
-            <a
-              href={contactLinks.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-primary"
-            >
-              GitHub
-            </a>
+            <span className="h-px w-8 bg-primary" aria-hidden="true" />
+            <span>Research, systems, and software.</span>
           </motion.div>
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 26 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.5,
-            delay: 1.1,
-            ease: [0.22, 1, 0.36, 1] as const,
-          }}
-          className="hidden lg:grid gap-4"
+          transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] as const }}
+          className="relative lg:pb-8"
         >
-          {teaserItems.map((item) => {
-            const project = projects.find((p) => p.id === item.id);
-            if (!project) return null;
-
-            return (
-              <button
-                key={item.id}
-                onClick={() => handleTeaserClick(item.id)}
-                className="group flex items-center gap-4 rounded-xl border border-border bg-surface p-3 text-left transition-colors hover:border-primary/50 hover:bg-surface-hover"
-              >
-                <div className="relative aspect-[16/10] w-28 shrink-0 overflow-hidden rounded-lg">
-                  <Image
-                    src={project.thumbnail}
-                    alt={project.title}
-                    fill
-                    sizes="112px"
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.05]"
-                  />
+          <Link
+            href={`/work/${heroProject.id}`}
+            className="group block"
+            aria-label={`Read the ${heroProject.title} case study`}
+          >
+            <figure className="overflow-hidden rounded-2xl border border-border bg-surface">
+              <div className="relative aspect-[16/10] overflow-hidden">
+                <Image
+                  src={heroProject.thumbnail}
+                  alt="DealFlow mobile creator deal workflow"
+                  fill
+                  priority
+                  sizes="(max-width: 1023px) 100vw, 55vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+                />
+                <span className="absolute left-5 top-5 rounded-full bg-bg/90 px-3 py-1.5 text-xs font-medium text-text backdrop-blur-sm">
+                  01 / 05
+                </span>
+              </div>
+              <figcaption className="flex items-center justify-between gap-4 border-t border-border px-5 py-4">
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-[0.14em] text-primary">
+                    Product concept
+                  </p>
+                  <p className="mt-1 text-base font-medium text-text">{heroProject.title}</p>
                 </div>
-                <div className="flex flex-1 items-center justify-between pr-2">
-                  <div>
-                    <p className="text-sm font-medium text-primary">
-                      {item.label}
-                    </p>
-                    <p className="text-base font-medium text-text">
-                      {project.title}
-                    </p>
-                  </div>
-                  <ArrowUpRight
-                    className="h-5 w-5 text-muted transition-colors group-hover:text-primary"
-                    weight="bold"
-                  />
-                </div>
-              </button>
-            );
-          })}
+                <span className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-text transition-colors group-hover:text-primary">
+                  Read case study
+                  <ArrowUpRight className="h-4 w-4" weight="bold" />
+                </span>
+              </figcaption>
+            </figure>
+          </Link>
+          <p className="mt-4 max-w-sm text-sm leading-6 text-muted">
+            A portfolio built from product problems, not personal branding.
+          </p>
         </motion.div>
       </div>
     </section>

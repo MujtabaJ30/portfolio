@@ -1,143 +1,117 @@
 "use client";
 
 import Image from "next/image";
-import {
-  ArrowUpRight,
-  GithubLogo,
-  Globe,
-  PresentationChart,
-  Folder,
-  FileText,
-} from "@phosphor-icons/react";
+import Link from "next/link";
+import { ArrowUpRight } from "@phosphor-icons/react";
 import { Project } from "@/app/types";
 
 interface ProjectCardProps {
   project: Project;
-  onClick: () => void;
   index: number;
 }
 
-const linkConfig: {
-  key: keyof Project["links"];
-  label: string;
-  icon: React.ReactNode;
-}[] = [
-  {
-    key: "live",
-    label: "Live Demo",
-    icon: <Globe className="h-3.5 w-3.5" weight="bold" />,
-  },
-  {
-    key: "github",
-    label: "GitHub",
-    icon: <GithubLogo className="h-3.5 w-3.5" weight="bold" />,
-  },
-  {
-    key: "pdf",
-    label: "Case Study",
-    icon: <FileText className="h-3.5 w-3.5" weight="bold" />,
-  },
-  {
-    key: "drive",
-    label: "Drive",
-    icon: <Folder className="h-3.5 w-3.5" weight="bold" />,
-  },
-  {
-    key: "ppt",
-    label: "Deck",
-    icon: <PresentationChart className="h-3.5 w-3.5" weight="bold" />,
-  },
-];
+const projectStatuses: Record<string, string> = {
+  dealflow: "Concept / prototype",
+  "whatsapp-dpdp": "Working prototype",
+  "x-split": "Shipped product",
+  "invoice-exception-handler": "Live MVP",
+  "rapido-teardown": "Product teardown",
+};
 
-export function ProjectCard({ project, onClick, index }: ProjectCardProps) {
-  const isReversed = index % 2 === 1;
+const cardLayouts = [
+  {
+    article: "lg:grid-cols-[1.12fr_0.88fr] lg:items-end",
+    media: "aspect-[16/10]",
+    details: "lg:pb-5",
+  },
+  {
+    article: "lg:grid-cols-[0.82fr_1.18fr] lg:items-center",
+    media: "aspect-[4/3] lg:order-2",
+    details: "lg:order-1 lg:pr-10",
+  },
+  {
+    article: "lg:grid-cols-[1fr_0.72fr] lg:items-start",
+    media: "aspect-[3/2]",
+    details: "lg:pt-10",
+  },
+  {
+    article: "lg:grid-cols-[0.72fr_1.28fr] lg:items-center",
+    media: "aspect-[4/3] lg:order-2",
+    details: "lg:order-1 lg:pr-12",
+  },
+  {
+    article: "lg:grid-cols-[1.25fr_0.75fr] lg:items-end",
+    media: "aspect-[16/9]",
+    details: "lg:order-2 lg:pb-8",
+  },
+] as const;
+
+export function ProjectCard({ project, index }: ProjectCardProps) {
+  const layout = cardLayouts[index % cardLayouts.length];
+  const status = projectStatuses[project.id] ?? "Product work";
 
   return (
     <article
       id={project.id}
-      className={`group grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12 ${
-        isReversed ? "lg:text-right" : ""
-      }`}
+      className={`grid gap-8 lg:gap-16 ${layout.article}`}
     >
-      <button
-        onClick={onClick}
-        className={`relative order-1 overflow-hidden rounded-xl border border-border bg-surface transition-colors hover:border-primary/30 lg:order-none ${
-          isReversed ? "lg:order-2" : ""
-        }`}
-        aria-label={`Open case study for ${project.title}`}
+      <Link
+        href={`/work/${project.id}`}
+        className={`group relative block overflow-hidden rounded-2xl border border-border bg-surface ${layout.media}`}
+        aria-label={`Read the ${project.title} case study`}
       >
-        <div className="aspect-[16/10] overflow-hidden">
-          <Image
-            src={project.thumbnail}
-            alt={`${project.title} thumbnail`}
-            width={1200}
-            height={750}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-          />
+        <Image
+          src={project.thumbnail}
+          alt={`${project.title} project artifact`}
+          fill
+          sizes="(max-width: 1023px) 100vw, 60vw"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+        />
+        <div className="absolute inset-x-0 top-0 flex items-center justify-between px-5 pt-5">
+          <span className="rounded-full bg-bg/90 px-3 py-1.5 text-xs font-medium text-text backdrop-blur-sm">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <span className="rounded-full bg-bg/90 p-2.5 text-text backdrop-blur-sm transition-colors group-hover:bg-primary">
+            <ArrowUpRight className="h-4 w-4" weight="bold" />
+          </span>
         </div>
-        <div className="absolute right-4 top-4 rounded-full bg-bg/80 p-2 text-text opacity-0 backdrop-blur-sm transition-opacity duration-200 group-hover:opacity-100">
-          <ArrowUpRight className="h-5 w-5" weight="bold" />
-        </div>
-      </button>
+      </Link>
 
-      <div className={`order-2 lg:order-none ${isReversed ? "lg:order-1" : ""}`}>
-        {project.tagline && <p className="text-sm font-medium text-primary">{project.tagline}</p>}
-        <h3 className="mt-2 text-3xl font-semibold tracking-tight text-text">
+      <div className={`flex flex-col ${layout.details}`}>
+        <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.14em] text-primary">
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <span className="h-px w-8 bg-primary" aria-hidden="true" />
+          <span>{status}</span>
+        </div>
+        <h3 className="mt-5 text-3xl font-medium tracking-[-0.03em] text-text sm:text-4xl">
           {project.title}
         </h3>
-        <p className="mt-1 text-lg text-muted">{project.subtitle}</p>
-        <p className="mt-4 max-w-xl text-base leading-relaxed text-muted">
+        <p className="mt-2 text-lg text-muted">{project.subtitle}</p>
+        <p className="mt-5 max-w-xl text-base leading-7 text-muted sm:text-lg sm:leading-8">
           {project.summary}
         </p>
 
-        <div className="mt-5 flex flex-wrap gap-2">
-          {project.stack.slice(0, 4).map((tech) => (
-            <span
-              key={tech}
-              className="rounded border border-border bg-surface px-2.5 py-1 text-xs font-medium text-muted"
-            >
+        <div className="mt-6 flex flex-wrap gap-x-3 gap-y-2 text-sm text-muted">
+          {project.stack.slice(0, 3).map((tech, techIndex) => (
+            <span key={tech} className="inline-flex items-center gap-3">
+              {techIndex > 0 && (
+                <span className="h-1 w-1 rounded-full bg-primary/70" aria-hidden="true" />
+              )}
               {tech}
             </span>
           ))}
         </div>
 
-        <div
-          className={`mt-6 flex flex-wrap items-center gap-3 ${
-            isReversed ? "lg:justify-end" : ""
-          }`}
+        <Link
+          href={`/work/${project.id}`}
+          className="group/case mt-8 inline-flex w-fit items-center gap-2 border-b border-text pb-1 text-sm font-medium text-text transition-colors hover:border-primary hover:text-primary"
         >
-          {linkConfig
-            .filter((item) => project.links[item.key])
-            .map((item) => (
-              <a
-                key={item.key}
-                href={project.links[item.key]}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group/link inline-flex items-center gap-1.5 rounded border border-border bg-surface px-3 py-1.5 text-sm text-text transition-colors hover:border-primary/50 hover:bg-surface-hover hover:text-primary"
-              >
-                {item.icon}
-                {item.key === "live" && project.links.liveLabel
-                  ? project.links.liveLabel
-                  : item.label}
-                <ArrowUpRight
-                  className="h-3.5 w-3.5 transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
-                  weight="bold"
-                />
-              </a>
-            ))}
-
-          <button
-            onClick={onClick}
-            className="group/case inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-primary-hover"
-          >
-            Read case study
-            <ArrowUpRight
-              className="h-4 w-4 transition-transform duration-200 group-hover/case:translate-x-0.5 group-hover/case:-translate-y-0.5"
-              weight="bold"
-            />
-          </button>
-        </div>
+          Read case study
+          <ArrowUpRight
+            className="h-4 w-4 transition-transform duration-200 group-hover/case:translate-x-0.5 group-hover/case:-translate-y-0.5"
+            weight="bold"
+          />
+        </Link>
       </div>
     </article>
   );

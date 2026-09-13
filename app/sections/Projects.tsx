@@ -1,53 +1,31 @@
-"use client";
-
-import { AnimatePresence } from "motion/react";
 import { projects } from "@/app/lib/data";
-import { Project } from "@/app/types";
 import { ProjectCard } from "@/app/components/ProjectCard";
-import { ProjectModal } from "@/app/components/ProjectModal";
 import { SectionReveal } from "@/app/components/SectionReveal";
-import { useProjectModal } from "@/app/components/ProjectModalProvider";
 
 export function Projects() {
-  const { openProjectId, openProject, closeProject } = useProjectModal();
-
-  const selectedProject: Project | null =
-    projects.find((project) => project.id === openProjectId) || null;
-
   return (
     <section
       id="projects"
-      className="px-6 py-12 md:px-12 md:py-16 lg:px-20 lg:py-20"
+      className="px-5 pb-28 pt-12 sm:px-8 lg:px-12 lg:pb-40 lg:pt-20"
     >
-      <div className="mx-auto max-w-7xl">
-        <SectionReveal className="mb-16 max-w-2xl">
-          <p className="text-base font-medium text-primary">Projects</p>
-          <h2 className="mt-3 text-4xl font-semibold tracking-tight text-text md:text-5xl lg:text-6xl">
-            Recent work
+      <div className="mx-auto max-w-[1400px]">
+        <SectionReveal className="mb-20 max-w-3xl lg:mb-28">
+          <h2 className="text-balance text-4xl font-medium leading-[1.02] tracking-[-0.035em] text-text sm:text-5xl lg:text-7xl">
+            Five projects, one way of working.
           </h2>
-          <p className="mt-4 text-lg text-muted">
-            Click a project to read the case study, or open the links directly.
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-muted sm:text-xl sm:leading-9">
+            Get close to the real constraint, make the trade-off explicit, and build the smallest useful thing.
           </p>
         </SectionReveal>
 
-        <div className="space-y-24 lg:space-y-32">
+        <div className="space-y-24 lg:space-y-36">
           {projects.map((project, index) => (
             <SectionReveal key={project.id} delay={index * 0.1}>
-              <ProjectCard
-                project={project}
-                index={index}
-                onClick={() => openProject(project.id)}
-              />
+              <ProjectCard project={project} index={index} />
             </SectionReveal>
           ))}
         </div>
       </div>
-
-      <AnimatePresence>
-        {selectedProject && (
-          <ProjectModal project={selectedProject} onClose={closeProject} />
-        )}
-      </AnimatePresence>
     </section>
   );
 }
