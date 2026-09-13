@@ -4,7 +4,7 @@ Quick context for anyone (including LLMs) updating this portfolio later.
 
 ## What this site is
 
-A single-page PM portfolio for Mujtaba Jafri. Next.js 15, TypeScript, Tailwind CSS v4, Phosphor Icons, Motion (Framer Motion).
+A product management intern portfolio for Mujtaba Jafri. Next.js 15, TypeScript, Tailwind CSS v4, Phosphor Icons, and Motion.
 
 ## Project order (as of July 2026)
 
@@ -49,7 +49,7 @@ Reorder the objects in the `projects` array in `app/lib/data.ts`. The first proj
 
 ### Updating hero text
 
-The hero philosophy text is in `app/lib/data.ts` under `heroContent.philosophy`. Previous options are saved in `hero-options.md`.
+The homepage hero copy is in `app/sections/Hero.tsx`. Keep it plain and specific to research, product definition, and prototypes.
 
 ### Updating skills
 

@@ -1,13 +1,5 @@
 import { Project, SkillGroup } from "@/app/types";
 
-export const heroContent = {
-  name: "Mujtaba Jafri",
-  role: "Product Manager",
-  philosophy:
-    "I care about what people actually do, not what they should do. That shapes every product decision: when to add friction, when to remove it, and when the best feature is the one you never build. I ship fast enough to find out if I was wrong.",
-  cta: "View My Work",
-};
-
 export const projects: Project[] = [
   {
     id: "dealflow",

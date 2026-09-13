@@ -6,19 +6,19 @@ brand
 
 ## Users
 
-The primary audience is product hiring teams: recruiters, hiring managers, and product leaders reviewing Mujtaba for product management roles. They are scanning quickly for judgment, evidence of execution, and the ability to explain trade-offs clearly.
+The primary audience is product hiring teams: recruiters, hiring managers, and product leaders reviewing Mujtaba for internships or entry-level product roles. They are scanning quickly for useful evidence, clear thinking, and the ability to explain decisions.
 
 ## Product Purpose
 
-This portfolio should make Mujtaba's product judgment legible before asking a visitor to read a full case study. It presents five real projects, shows the work itself, and gives each project enough space to explain the problem, decision, process, and current state.
+This portfolio gives hiring teams a quick way to understand what Mujtaba has worked on. It presents five projects, shows the work itself, and gives each project enough space to explain the problem, approach, process, and current state.
 
-Success means a hiring reader can understand what Mujtaba builds, how he thinks, and how to contact him without hunting through a long page or decoding a decorative interface.
+Success means a hiring reader can understand what Mujtaba has built or analyzed, how he approaches a problem, and how to contact him without hunting through a long page.
 
 ## Brand Personality
 
-Quietly confident, exact, human.
+Specific, calm, and human.
 
-The work carries the authority. Copy should be plain, first-person, and specific. The site can have a point of view, but it should never perform expertise through jargon, inflated claims, or invented outcomes.
+Copy should sound like a capable intern explaining real work. Use plain first-person language and keep claims tied to the projects. Do not use jargon, inflated claims, or invented outcomes.
 
 ## Anti-references
 
