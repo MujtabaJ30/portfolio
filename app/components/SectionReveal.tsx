@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 
 interface SectionRevealProps {
   children: ReactNode;
@@ -16,6 +16,7 @@ export function SectionReveal({
   delay = 0,
   direction = "up",
 }: SectionRevealProps) {
+  const reduceMotion = useReducedMotion();
   const directionOffset = {
     up: { y: 24 },
     down: { y: -24 },
@@ -26,7 +27,7 @@ export function SectionReveal({
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, ...directionOffset[direction] }}
+      initial={reduceMotion ? false : { opacity: 1, ...directionOffset[direction] }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{
