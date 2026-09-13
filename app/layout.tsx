@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mujtaba Jafri — Product Manager",
+  title: "Mujtaba Jafri | Product Management Intern",
   description:
-    "Mujtaba Jafri is a product manager who turns ambiguous product problems into clear decisions and useful software.",
+    "Mujtaba Jafri is a product management intern with work across research, product specs, prototypes, and small shipped tools.",
 };
 
 export default function RootLayout({

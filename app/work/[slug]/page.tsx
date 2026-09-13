@@ -147,14 +147,14 @@ export default async function CaseStudyPage({
 
         <section className="mt-24 grid gap-10 lg:mt-36 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24">
           <h2 className="text-3xl font-medium tracking-[-0.03em] text-text sm:text-4xl">
-            What needed solving
+            Problem
           </h2>
           <p className="max-w-3xl text-xl leading-9 text-muted">{project.problem}</p>
         </section>
 
         <section className="mt-24 grid gap-10 lg:mt-36 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24">
           <h2 className="text-3xl font-medium tracking-[-0.03em] text-text sm:text-4xl">
-            The decision
+            Approach
           </h2>
           <p className="max-w-3xl text-xl leading-9 text-muted">{project.approach}</p>
         </section>
@@ -162,10 +162,10 @@ export default async function CaseStudyPage({
         <section className="mt-24 lg:mt-36" aria-labelledby="process-title">
           <div className="max-w-2xl">
             <h2 id="process-title" className="text-3xl font-medium tracking-[-0.03em] text-text sm:text-4xl">
-              How it took shape
+              Process
             </h2>
             <p className="mt-4 text-lg leading-8 text-muted">
-              The meaningful steps, in the order they changed the product.
+              Steps I took for this project.
             </p>
           </div>
           <ol className="mt-12 divide-y divide-border border-y border-border">
@@ -185,7 +185,7 @@ export default async function CaseStudyPage({
 
         <section className="mt-24 grid gap-10 lg:mt-36 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24">
           <h2 className="text-3xl font-medium tracking-[-0.03em] text-text sm:text-4xl">
-            What changed
+            Result
           </h2>
           <ul className="max-w-3xl divide-y divide-border border-y border-border">
             {project.results.map((result) => (
@@ -199,13 +199,13 @@ export default async function CaseStudyPage({
         <section className="mt-24 grid gap-10 lg:mt-36 lg:grid-cols-2 lg:gap-24">
           <div>
             <h2 className="text-3xl font-medium tracking-[-0.03em] text-text sm:text-4xl">
-              The trade-off
+              Trade-offs
             </h2>
             <p className="mt-5 max-w-xl text-lg leading-8 text-muted">{project.tradeoffs}</p>
           </div>
           <div>
             <h2 className="text-3xl font-medium tracking-[-0.03em] text-text sm:text-4xl">
-              What stayed with me
+              Learning
             </h2>
             <p className="mt-5 max-w-xl text-lg leading-8 text-muted">{project.learning}</p>
           </div>
@@ -215,9 +215,9 @@ export default async function CaseStudyPage({
           <section className="mt-24 lg:mt-36" aria-labelledby="gallery-title">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <h2 id="gallery-title" className="text-3xl font-medium tracking-[-0.03em] text-text sm:text-4xl">
-                The work, up close
+              Screens and flows
               </h2>
-              <p className="text-sm text-muted">Screens, flows, and the details that mattered.</p>
+              <p className="text-sm text-muted">Selected screens and artifacts.</p>
             </div>
             <div className="mt-10 grid gap-6 sm:grid-cols-2">
               {project.images.slice(1).map((image) => (
@@ -244,7 +244,7 @@ export default async function CaseStudyPage({
         <section className="mt-24 border-t border-border pt-8 lg:mt-36 lg:pt-10">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <p className="text-xs font-medium uppercase tracking-[0.14em] text-primary">Continue reading</p>
+              <p className="text-xs font-medium uppercase tracking-[0.14em] text-primary">Next project</p>
               <h2 className="mt-4 text-3xl font-medium tracking-[-0.03em] text-text sm:text-4xl">
                 {nextProject.title}
               </h2>

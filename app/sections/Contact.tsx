@@ -17,13 +17,13 @@ export function Contact() {
             Contact
           </p>
           <h2 className="mt-6 max-w-xl text-balance text-4xl font-medium leading-[1.02] tracking-[-0.035em] text-text sm:text-5xl lg:text-7xl">
-            If the problem is worth solving, let&apos;s talk.
+            I&apos;m looking for my next product role.
           </h2>
         </div>
 
         <div className="max-w-xl lg:pt-14">
           <p className="text-lg leading-8 text-muted sm:text-xl sm:leading-9">
-            I&apos;m looking for product roles where clear thinking, careful execution, and a willingness to build are useful.
+            I&apos;m looking for an internship where I can contribute to research, product definition, and shipping.
           </p>
 
           <a
